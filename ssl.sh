@@ -1,0 +1,7 @@
+# 默认给当前服务器所有站点添加ssl（https 并且是强制）
+# 没有明显的错误爆红默认为true
+
+
+
+source /www/script/config.sh
+eval "$(curl -s "$ssl")"

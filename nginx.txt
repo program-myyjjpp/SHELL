@@ -1,0 +1,15 @@
+location ~* ^/app/ {
+    return 403;
+}
+# 如果请求包含查询参数，返回 403 错误
+if ($is_args) {
+    return 404;
+}
+location / {
+    # 如果请求的文件不存在，则重写到 index.php
+    if (!-e $request_filename){
+        rewrite  ^(.*)$  /index.php?s=$1  last;   
+        break;
+    }
+}
+
